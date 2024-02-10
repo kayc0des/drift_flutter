@@ -1,4 +1,4 @@
-# drift
+# Drift
 
 **Drift** is a mobile app that allows users to rent luxurious cars at affordable prices. Whether for a weekend getaway or a special occasion, drift provides an easy and convenient way to access high-end vehicles without breaking the bank. This project was developed as part of the Mobile Application Development module, showcasing the team's skills in creating sleek and user-friendly mobile applications.
 
