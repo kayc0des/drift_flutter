@@ -1,5 +1,7 @@
-name: drift
-description: "A new Flutter project."
+name: myapp
+description: A exported flutter project from FUNCTION12
+
+
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -19,7 +21,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.2.4 <4.0.0'
+  sdk: '>=2.18.2 <3.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -35,6 +37,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  google_fonts: ^6.1.0
 
 dev_dependencies:
   flutter_test:
@@ -45,7 +48,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -62,6 +65,52 @@ flutter:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/page-1/images/image-2-1.png
+    - assets/page-1/images/icons8-google-1.png
+    - assets/page-1/images/vector-1.png
+    - assets/page-1/images/image-1-1.png
+    - assets/page-1/images/rectangle-29.png
+    - assets/page-1/images/image-3-1.png
+    - assets/page-1/images/image-6-1.png
+    - assets/page-1/images/icons8-apple-logo-1.png
+    - assets/page-1/images/rectangle-29-5eD.png
+    - assets/page-1/images/image-2-1-edj.png
+    - assets/page-1/images/group-1.png
+    - assets/page-1/images/separator.png
+    - assets/page-1/images/image-5-1.png
+    - assets/page-1/images/vector-1-xMT.png
+    - assets/page-1/images/image-3-1-BVf.png
+    - assets/page-1/images/component-button.png
+    - assets/page-1/images/group-2.png
+    - assets/page-1/images/rectangle-29-Zp9.png
+    - assets/page-1/images/component-button-PWD.png
+    - assets/page-1/images/rectangle-29-R7T.png
+    - assets/page-1/images/icon-material-icon-sentimentsatisfiedblack24dp.png
+    - assets/page-1/images/component-key.png
+    - assets/page-1/images/component-key-BHX.png
+    - assets/page-1/images/vector-1-Vau.png
+    - assets/page-1/images/component-key-aZj.png
+    - assets/page-1/images/image-2-1-GLd.png
+    - assets/page-1/images/vector-1-CmK.png
+    - assets/page-1/images/image-10-1.png
+    - assets/page-1/images/group-1-QtM.png
+    - assets/page-1/images/image-1-1-Lhs.png
+    - assets/page-1/images/ellipse-6.png
+    - assets/page-1/images/image-3-1-52m.png
+    - assets/page-1/images/image-3-1-Ekm.png
+    - assets/page-1/images/sidebar.png
+    - assets/page-1/images/image-1-1-Siq.png
+    - assets/page-1/images/image-9-1.png
+    - assets/page-1/images/separator-m4q.png
+    - assets/page-1/images/ellipse-1-bg.png
+    - assets/page-1/images/image-2-1-kSy.png
+    - assets/page-1/images/image-6-1-oos.png
+    - assets/page-1/images/image-1-1-9Au.png
+    - assets/page-1/images/component-key-Bk1.png
+    - assets/page-1/images/image-10-2.png
+    - assets/page-1/images/image-8-1.png
+    - assets/page-1/images/image-8-2.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
