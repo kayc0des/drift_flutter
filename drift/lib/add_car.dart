@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatelessWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+  const RegisterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class RegisterPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               // Create an account text
-              Text(
+              const Text(
                 'Create an account',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
@@ -101,7 +101,7 @@ class RegisterPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     'ADD CAR',
                     style: TextStyle(color: Colors.white),
                   ),
@@ -113,12 +113,6 @@ class RegisterPage extends StatelessWidget {
                 onTap: () {
                   // Handle sign in action
                 },
-                child: Text(
-                  'Have an account? Sign in',
-                  style: TextStyle(
-                    color: Colors.blue,
-                  ),
-                ),
               ),
               const SizedBox(height: 20.0),
               // Sign in with Google and Apple
@@ -137,7 +131,7 @@ class RegisterPage extends StatelessWidget {
                       minimumSize:
                           Size(MediaQuery.of(context).size.width * 0.35, 50.0),
                     ),
-                    child: Text('Sign in with Google',
+                    child: const Text('Sign in with Google',
                         style: TextStyle(color: Colors.white)),
                   ),
                   ElevatedButton(
@@ -152,7 +146,7 @@ class RegisterPage extends StatelessWidget {
                       minimumSize:
                           Size(MediaQuery.of(context).size.width * 0.35, 50.0),
                     ),
-                    child: Text('Sign in with Apple',
+                    child: const Text('Sign in with Apple',
                         style: TextStyle(color: Colors.white)),
                   ),
                 ],

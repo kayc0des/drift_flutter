@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class LoginPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               // Welcome back text
-              Text(
+              const Text(
                 'Welcome back!!!',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
@@ -66,7 +66,7 @@ class LoginPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     'LOGIN',
                     style: TextStyle(color: Colors.white),
                   ),
@@ -78,7 +78,7 @@ class LoginPage extends StatelessWidget {
                 onTap: () {
                   // Handle forgot password action
                 },
-                child: Text(
+                child: const Text(
                   'Forgot password? Get help.',
                   style: TextStyle(
                     color: Colors.blue,
