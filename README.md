@@ -9,3 +9,6 @@
 
 ## Tech Stack
 The project is built using the Flutter framework, known for its fast development, expressive UI, and cross-platform compatibility. Flutter allows for seamless integration of design and functionality, ensuring a smooth user experience across both Android and iOS devices. Additionally, the team leveraged various Flutter packages and plugins to enhance app features and streamline development processes.
+
+## Protoype
+- [Figma Prototype](https://www.figma.com/file/UlSQjXj2C45j8LBpb6201r/Drift-Mobile-App?type=design&mode=design&t=egV7gz63m3Fhngpo-1)
