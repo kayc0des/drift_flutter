@@ -1,11 +1,95 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'firebase_initializer.dart';
 
-class RegisterPage extends StatelessWidget {
-  const RegisterPage({super.key});
+class Car {
+  final String name;
+  final String brand;
+  final String model;
+  final String year;
+  final String price;
+  final String status;
+
+  Car({
+    required this.name,
+    required this.brand,
+    required this.model,
+    required this.year,
+    required this.price,
+    required this.status,
+  });
+}
+
+class CarPage extends StatefulWidget {
+  const CarPage({super.key});
+
+  @override
+  State<CarPage> createState() => _CarPageState();
+}
+
+class _CarPageState extends State<CarPage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  Future<void> _addCarToDatabase(Car car) async {
+    try {
+      await FirebaseFirestore.instance.collection('cars').add({
+        'name': car.name,
+        'brand': car.brand,
+        'model': car.model,
+        'year': car.year,
+        'price': car.price,
+        'status': car.status,
+      });
+      // Car added successfully
+      _showSuccessAlert();
+    } catch (e) {
+      // Handle error
+      if (e is FirebaseException) {
+        print('Firebase Exception: ${e.message}');
+      } else {
+        print('Error adding car: $e');
+      }
+    }
+  }
+
+  void _showSuccessAlert() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Success'),
+          content: const Text('Car added successfully'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+                _clearForm(); // Clear the form fields
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _clearForm() {
+    setState(() {
+      // Clear form fields
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    String carName = '';
+    String carBrand = '';
+    String carModel = '';
+    String carYear = '';
+    String carPrice = '';
+    String carStatus = '';
+
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
@@ -21,17 +105,17 @@ class RegisterPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Create an account text
+              // Welcome back text
               const Text(
-                'Create an account',
+                'Add a Car',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 32.0,
-                  letterSpacing: -0.9,
+                  letterSpacing: -0.9, // Reduced letter spacing
                 ),
               ),
-              const SizedBox(height: 30.0),
-              // Full name field
+              const SizedBox(height: 20.0),
+              // Car name field
               TextField(
                 decoration: InputDecoration(
                   labelText: 'Car Name',
@@ -39,9 +123,10 @@ class RegisterPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                 ),
+                onChanged: (value) => carName = value,
               ),
               const SizedBox(height: 20.0),
-              // Email field
+              // Brand field
               TextField(
                 decoration: InputDecoration(
                   labelText: 'Brand',
@@ -49,9 +134,10 @@ class RegisterPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                 ),
+                onChanged: (value) => carBrand = value,
               ),
               const SizedBox(height: 20.0),
-              // Password field
+              // Model field
               TextField(
                 decoration: InputDecoration(
                   labelText: 'Model',
@@ -59,7 +145,10 @@ class RegisterPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                 ),
+                onChanged: (value) => carModel = value,
               ),
+              const SizedBox(height: 20.0),
+              // Year field
               TextField(
                 decoration: InputDecoration(
                   labelText: 'Year',
@@ -67,7 +156,21 @@ class RegisterPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                 ),
+                onChanged: (value) => carYear = value,
               ),
+              const SizedBox(height: 20.0),
+              // Price field
+              TextField(
+                decoration: InputDecoration(
+                  labelText: 'Price',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
+                onChanged: (value) => carPrice = value,
+              ),
+              const SizedBox(height: 20.0),
+              // Status field
               TextField(
                 decoration: InputDecoration(
                   labelText: 'Status',
@@ -75,25 +178,24 @@ class RegisterPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                 ),
+                onChanged: (value) => carStatus = value,
               ),
               const SizedBox(height: 20.0),
-              // Address field
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Rental',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20.0),
-              // Sign up button
+              // Add car button
               SizedBox(
                 width: double.infinity,
                 height: 50.0,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Handle sign up action
+                    final car = Car(
+                      name: carName,
+                      brand: carBrand,
+                      model: carModel,
+                      year: carYear,
+                      price: carPrice,
+                      status: carStatus,
+                    );
+                    _addCarToDatabase(car);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.black,
@@ -108,49 +210,6 @@ class RegisterPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10.0),
-              // Have an account? Sign in text
-              GestureDetector(
-                onTap: () {
-                  // Handle sign in action
-                },
-              ),
-              const SizedBox(height: 20.0),
-              // Sign in with Google and Apple
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      // Handle sign in with Google action
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      minimumSize:
-                          Size(MediaQuery.of(context).size.width * 0.35, 50.0),
-                    ),
-                    child: const Text('Sign in with Google',
-                        style: TextStyle(color: Colors.white)),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Handle sign in with Apple action
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      minimumSize:
-                          Size(MediaQuery.of(context).size.width * 0.35, 50.0),
-                    ),
-                    child: const Text('Sign in with Apple',
-                        style: TextStyle(color: Colors.white)),
-                  ),
-                ],
-              ),
             ],
           ),
         ),
@@ -159,8 +218,9 @@ class RegisterPage extends StatelessWidget {
   }
 }
 
-void main() {
+void main() async {
+  await initializeFirebase();
   runApp(const MaterialApp(
-    home: RegisterPage(),
+    home: CarPage(),
   ));
 }
