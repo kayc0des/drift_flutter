@@ -9,13 +9,13 @@ class CarsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cars Collection'),
+        title: const Text('Cars Collection'),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance.collection('cars').snapshots(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
 
           if (snapshot.hasError) {
@@ -25,7 +25,7 @@ class CarsScreen extends StatelessWidget {
           final carDocs = snapshot.data?.docs;
 
           if (carDocs == null || carDocs.isEmpty) {
-            return Center(child: Text('No cars found.'));
+            return const Center(child: Text('No cars found.'));
           }
 
           return ListView.builder(
@@ -39,13 +39,13 @@ class CarsScreen extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     IconButton(
-                      icon: Icon(Icons.edit),
+                      icon: const Icon(Icons.edit),
                       onPressed: () {
                         _editCar(context, carDocs[index].id, carData);
                       },
                     ),
                     IconButton(
-                      icon: Icon(Icons.delete),
+                      icon: const Icon(Icons.delete),
                       onPressed: () {
                         _deleteCar(carDocs[index].id);
                       },
@@ -85,7 +85,7 @@ class EditForm extends StatefulWidget {
   final String carId;
   final Map<String, dynamic> carData;
 
-  const EditForm({required this.carId, required this.carData});
+  const EditForm({super.key, required this.carId, required this.carData});
 
   @override
   _EditFormState createState() => _EditFormState();
@@ -114,32 +114,32 @@ class _EditFormState extends State<EditForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit Car'),
+        title: const Text('Edit Car'),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             TextField(
                 controller: _nameController,
-                decoration: InputDecoration(labelText: 'Car Name')),
+                decoration: const InputDecoration(labelText: 'Car Name')),
             TextField(
                 controller: _brandController,
-                decoration: InputDecoration(labelText: 'Brand')),
+                decoration: const InputDecoration(labelText: 'Brand')),
             TextField(
                 controller: _modelController,
-                decoration: InputDecoration(labelText: 'Model')),
+                decoration: const InputDecoration(labelText: 'Model')),
             TextField(
                 controller: _yearController,
-                decoration: InputDecoration(labelText: 'Year')),
+                decoration: const InputDecoration(labelText: 'Year')),
             TextField(
                 controller: _priceController,
-                decoration: InputDecoration(labelText: 'Price')),
+                decoration: const InputDecoration(labelText: 'Price')),
             TextField(
                 controller: _statusController,
-                decoration: InputDecoration(labelText: 'Status')),
-            SizedBox(height: 20.0),
+                decoration: const InputDecoration(labelText: 'Status')),
+            const SizedBox(height: 20.0),
             ElevatedButton(
               onPressed: () {
                 _updateCar(widget.carId, {
@@ -152,7 +152,7 @@ class _EditFormState extends State<EditForm> {
                 });
                 Navigator.pop(context);
               },
-              child: Text('Update Car'),
+              child: const Text('Update Car'),
             ),
           ],
         ),

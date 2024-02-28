@@ -27,20 +27,20 @@ class ResultPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Firestore Example'),
+        title: const Text('Firestore Example'),
       ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection('cars').snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
           if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           }
           final carDocs = snapshot.data!.docs;
           if (carDocs.isEmpty) {
-            return Center(child: Text('No cars found.'));
+            return const Center(child: Text('No cars found.'));
           }
           return ListView.builder(
             itemCount: carDocs.length,
