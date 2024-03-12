@@ -1,3 +1,4 @@
+import 'package:drift/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -127,7 +128,7 @@ class RegisterPage extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      // Handle sign in with Apple action
+                      AuthService().signInWithGoogle();
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,
