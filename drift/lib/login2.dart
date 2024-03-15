@@ -46,7 +46,9 @@ class LoginPages extends StatelessWidget {
               SignedInPage(email: userCredential.user!.email!),
         ),
       );
-    } catch (e) {
+    } on FirebaseAuthException catch (e) {
+      // Catch FirebaseAuthException
+      print('Firebase Auth Error: ${e.message}');
       // Show invalid credentials popup if sign-in fails
       showDialog(
         context: context,
@@ -64,6 +66,9 @@ class LoginPages extends StatelessWidget {
           );
         },
       );
+    } catch (e) {
+      // Handle other exceptions
+      print('Error: $e');
     }
   }
 
