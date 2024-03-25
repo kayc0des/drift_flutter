@@ -35,14 +35,14 @@ void main() {
         ),
       );
 
-      // Find the plus button
+      // Find the minus button
       final Finder minusButton = find.byIcon(Icons.remove);
 
-      // Act: Tap the plus button
+      // Act: Tap the minus button
       await tester.tap(minusButton);
       await tester.pump();
 
-      // Assert: Verify that the number of days has been incremented
+      // Assert: Verify that the number of days has been decremented
       expect(find.text('2'), findsOneWidget);
     },
   );
