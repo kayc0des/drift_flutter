@@ -74,7 +74,6 @@ class _UserPageState extends State<UserPage> {
         'name': user.name,
         'email': user.email,
         'address': user.address,
-        // You can add more fields as needed
       });
 
       // Navigate to signed-in page after successful registration
