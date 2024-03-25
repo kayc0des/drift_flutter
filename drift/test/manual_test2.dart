@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'firebase_initializer.dart';
+import 'package:drift/firebase_initializer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class User {
